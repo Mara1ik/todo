@@ -13,6 +13,8 @@ function ListItem({ task, deleteTask }) {
   function handler() {
     deleteTask(task);
     setIsDone(false)
+    const checkbox = checkboxRef.current;
+    checkbox.checked = false;
   }
 
   return (
