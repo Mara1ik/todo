@@ -1,10 +1,20 @@
-import { Title, Container } from "./style";
+import { useState } from "react";
+import Header from "../components/Header";
+import List from "../components/List";
+import TaskInput from "../components/TaskInput";
+import { Container } from "./style";
 
 function App() {
+  const [taskList, setTaskList] = useState([]);
+
   return (
-    <Container>
-      <Title>To Do list</Title>
-    </Container>
+    <>
+      <Container>
+        <Header />
+        <List taskList={taskList} setTaskList={setTaskList} />
+        <TaskInput setTaskList={setTaskList} />
+      </Container>
+    </>
   );
 }
 
