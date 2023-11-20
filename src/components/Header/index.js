@@ -6,7 +6,7 @@ function Header() {
   return (
     <StyledHeaderWrapper>
       <img src={fileIcon} alt="file icon" />
-      <h1>To Do app Test</h1>
+      <h1>To Do app</h1>
       <StyledLine />
       <img src={arrow} alt="arrow down" />
     </StyledHeaderWrapper>
