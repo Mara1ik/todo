@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Li = styled.li`
+export const StyledLi = styled.li`
   display: flex;
   align-items: center;
   width: 100%;
@@ -12,7 +12,7 @@ export const Li = styled.li`
   }
 `;
 
-export const Input = styled.input`
+export const StyledInput = styled.input`
   margin: 0;
   margin-right: 9px;
   width: 20px;
@@ -21,7 +21,7 @@ export const Input = styled.input`
   cursor: pointer;
 `;
 
-export const Label = styled.label`
+export const StyledLabel = styled.label`
   cursor: pointer;
 
   -webkit-user-select: none;
@@ -29,7 +29,7 @@ export const Label = styled.label`
   -ms-user-select: none;
 `;
 
-export const Button = styled.button`
+export const StyledButton = styled.button`
   height: 24px;
   align-items: center;
   position: absolute;

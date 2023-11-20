@@ -1,5 +1,5 @@
 import ListItem from "./ListItem";
-import { Ul } from "./style";
+import { StyledUl } from "./style";
 
 function List({ taskList, setTaskList }) {
 
@@ -8,12 +8,12 @@ function List({ taskList, setTaskList }) {
   }
 
   return (
-    <Ul>
+    <StyledUl>
       {taskList.map(
         (task, i) =>
           i < 11 && <ListItem task={task} id={task} deleteTask={deleteTask} />
       )}
-    </Ul>
+    </StyledUl>
   );
 }
 

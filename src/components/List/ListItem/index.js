@@ -1,16 +1,16 @@
 import { useRef, useState } from "react";
 import binIcon from "./../../../img/binIcon.svg";
-import { Li, Input, Label, Button } from "./style";
+import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
 
 function ListItem({ task, deleteTask }) {
   const checkboxRef = useRef(null);
   const [isDone, setIsDone] = useState(false);
 
   function taskDone() {
-    setIsDone((prev) => !prev);
+    setIsDone(!isDone);
   }
 
-  function handler() {
+  function onClick() {
     deleteTask(task);
     setIsDone(false)
     const checkbox = checkboxRef.current;
@@ -18,17 +18,17 @@ function ListItem({ task, deleteTask }) {
   }
 
   return (
-    <Li>
-      <Input type="checkbox" ref={checkboxRef} id={task} onClick={taskDone} />
-      <Label className={isDone && "checked"} for={task}>
+    <StyledLi>
+      <StyledInput type="checkbox" ref={checkboxRef} id={task} onClick={taskDone} />
+      <StyledLabel className={isDone && "checked"} for={task}>
         {task}
-      </Label>
+      </StyledLabel>
       {isDone && (
-        <Button type="button" onClick={handler}>
+        <StyledButton type="button" onClick={onClick}>
           <img src={binIcon} alt="Trash bin" />
-        </Button>
+        </StyledButton>
       )}
-    </Li>
+    </StyledLi>
   );
 }
 

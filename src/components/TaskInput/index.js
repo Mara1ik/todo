@@ -1,9 +1,9 @@
-import React, { useRef } from "react";
+import { useRef } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
-import { TaskInputWrapper, Input, Button } from "./style";
+import { StyledTaskInputWrapper, StyledInput, StyledButton } from "./style";
 
 function TaskInput({ setTaskList }) {
-  const inputRef = React.useRef(null);
+  const inputRef = useRef(null);
   function addTask() {
     const value = inputRef.current.value;
     if (value === "") return;
@@ -12,12 +12,12 @@ function TaskInput({ setTaskList }) {
   }
 
   return (
-    <TaskInputWrapper>
-      <Button type="button" onClick={addTask}>
+    <StyledTaskInputWrapper>
+      <StyledButton type="button" onClick={addTask}>
         <img src={pencilIcon} alt="pencil" />
-      </Button>
-      <Input type="text" ref={inputRef} placeholder="Write a task..." />
-    </TaskInputWrapper>
+      </StyledButton>
+      <StyledInput type="text" ref={inputRef} placeholder="Write a task..." />
+    </StyledTaskInputWrapper>
   );
 }
 

@@ -1,15 +1,15 @@
 import fileIcon from "./../../img/fileIcon.svg";
 import arrow from "./../../img/arrow.svg";
-import { HeaderWrapper, Line } from "./style";
+import { StyledHeaderWrapper, StyledLine } from "./style";
 
 function Header() {
   return (
-    <HeaderWrapper>
+    <StyledHeaderWrapper>
       <img src={fileIcon} alt="file icon" />
       <h1>To Do app</h1>
-      <Line></Line>
+      <StyledLine />
       <img src={arrow} alt="arrow down" />
-    </HeaderWrapper>
+    </StyledHeaderWrapper>
   );
 }
 
