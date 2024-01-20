@@ -1,9 +1,18 @@
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledTaskInputWrapper, StyledInput, StyledButton } from "./style";
 
 function TaskInput({ setTaskList }) {
   const inputRef = useRef(null);
+  useEffect(() => {
+    inputRef.current.focus();
+    inputRef.current.addEventListener("keydown", function (event) {
+      if (event.keyCode === 13 || event.key === "Enter") {
+        addTask();
+      }
+    });
+  }, []);
+
   function addTask() {
     const value = inputRef.current.value;
     if (value === "") return;
