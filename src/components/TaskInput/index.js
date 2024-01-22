@@ -1,32 +1,44 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
-import { StyledTaskInputWrapper, StyledInput, StyledButton } from "./style";
+import { StyledForm, StyledInput, StyledButton } from "./style";
 
 function TaskInput({ setTaskList }) {
   const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState();
+
   useEffect(() => {
     inputRef.current.focus();
-    inputRef.current.addEventListener("keydown", function (event) {
-      if (event.keyCode === 13 || event.key === "Enter") {
-        addTask();
-      }
-    });
   }, []);
 
   function addTask() {
-    const value = inputRef.current.value;
-    if (value === "") return;
-    setTaskList((arr) => [...arr, value]);
-    inputRef.current.value = "";
+    if (inputValue === "") return;
+    setTaskList((arr) => [...arr, inputValue]);
+    setInputValue('');
+    console.log("gds")
+  }
+
+  function submitHandler(e) {
+    e.preventDefault();
+    addTask();
+  }
+
+  function onInputChange(e) {
+    setInputValue(e.target.value)
   }
 
   return (
-    <StyledTaskInputWrapper>
-      <StyledButton type="button" onClick={addTask}>
+    <StyledForm onSubmit={submitHandler}>
+      <StyledButton type="submit">
         <img src={pencilIcon} alt="pencil" />
       </StyledButton>
-      <StyledInput type="text" ref={inputRef} placeholder="Write a task..." />
-    </StyledTaskInputWrapper>
+      <StyledInput
+        onChange={onInputChange}
+        type="text"
+        ref={inputRef}
+        placeholder={"Write a task..."}
+        value={inputValue || ''}
+      />
+    </StyledForm>
   );
 }
 

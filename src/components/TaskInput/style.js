@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyledTaskInputWrapper = styled.div`
+export const StyledForm = styled.form`
   display: flex;
   position: absolute;
   bottom: 35px;
