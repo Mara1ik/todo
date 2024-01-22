@@ -14,7 +14,6 @@ function TaskInput({ setTaskList }) {
     if (inputValue === "") return;
     setTaskList((arr) => [...arr, inputValue]);
     setInputValue('');
-    console.log("gds")
   }
 
   function submitHandler(e) {

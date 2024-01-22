@@ -12,14 +12,16 @@ function ListItem({ task, deleteTask }) {
 
   function onClick() {
     deleteTask(task);
-    setIsDone(false)
-    const checkbox = checkboxRef.current;
-    checkbox.checked = false;
   }
 
   return (
     <StyledLi>
-      <StyledInput type="checkbox" ref={checkboxRef} id={task} onClick={taskDone} />
+      <StyledInput
+        type="checkbox"
+        ref={checkboxRef}
+        id={task}
+        onClick={taskDone}
+      />
       <StyledLabel className={isDone && "checked"} for={task}>
         {task}
       </StyledLabel>
