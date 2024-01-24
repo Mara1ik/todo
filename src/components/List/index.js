@@ -3,7 +3,14 @@ import { StyledUl } from "./style";
 
 function List({ taskList, setTaskList }) {
   function deleteTask(taskId) {
-    setTaskList((arr) => arr.filter((item) => item.id !== taskId));
+    const index = taskList.findIndex((task) => task.id === taskId);
+    document.getElementsByTagName("li")[index].remove();
+    const TasksArray = [...document.getElementsByTagName("li")];
+    const result = [];
+    TasksArray.forEach((element) => {
+      result.push({ id: element.id, value: element.textContent });
+    });
+    setTaskList(result)
   }
 
   return (

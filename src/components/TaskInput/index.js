@@ -1,10 +1,11 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useId } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
 
 function TaskInput({ setTaskList }) {
   const inputRef = useRef(null);
   const [inputValue, setInputValue] = useState();
+  const taskId = useId();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -12,7 +13,7 @@ function TaskInput({ setTaskList }) {
 
   function addTask() {
     if (inputValue === "") return;
-    setTaskList((arr) => [...arr, {id: Math.random(), value: inputValue}]);
+    setTaskList((arr) => [...arr, {id: taskId, value: inputValue}]);
     setInputValue('');
   }
 

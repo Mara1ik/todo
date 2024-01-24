@@ -15,7 +15,7 @@ function ListItem({ task, taskId, deleteTask }) {
   }
 
   return (
-    <StyledLi>
+    <StyledLi id={taskId}>
       <StyledInput
         type="checkbox"
         ref={checkboxRef}
