@@ -12,7 +12,7 @@ function TaskInput({ setTaskList }) {
 
   function addTask() {
     if (inputValue === "") return;
-    setTaskList((arr) => [...arr, inputValue]);
+    setTaskList((arr) => [...arr, {id: Math.random(), value: inputValue}]);
     setInputValue('');
   }
 

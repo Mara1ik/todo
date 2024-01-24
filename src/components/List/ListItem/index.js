@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
 
-function ListItem({ task, deleteTask }) {
+function ListItem({ task, taskId, deleteTask }) {
   const checkboxRef = useRef(null);
   const [isDone, setIsDone] = useState(false);
 
@@ -11,7 +11,7 @@ function ListItem({ task, deleteTask }) {
   }
 
   function onClick() {
-    deleteTask(task);
+    deleteTask(taskId);
   }
 
   return (
