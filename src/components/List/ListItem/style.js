@@ -19,6 +19,7 @@ export const StyledInput = styled.input`
   aspect-ratio: 1;
   border: 2px solid #b5b5ba;
   cursor: pointer;
+  accent-color: grey;
 `;
 
 export const StyledLabel = styled.label`
