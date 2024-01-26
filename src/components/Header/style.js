@@ -4,13 +4,13 @@ export const StyledHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 33px;
+  margin-bottom: 33rem;
 `;
 
 
 
 export const StyledLine = styled.div`
-  width: 179px;
-  height: 1px;
-  border-bottom: 2px solid rgba(188, 188, 195, 0.7);
+  width: 179rem;
+  height: 1rem;
+  border-bottom: 2rem solid rgba(188, 188, 195, 0.7);
 `;

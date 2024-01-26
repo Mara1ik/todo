@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const StyledContainer = styled.div`
-  width: 400px;
-  height: 600px;
+  width: 400rem;
+  height: 600rem;
   margin: auto;
-  padding: 35px 32px;
-  border: 1px solid black;
+  padding: 35rem 32rem;
+  border: 1rem solid black;
   position: relative;
 `;

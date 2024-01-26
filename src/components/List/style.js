@@ -4,5 +4,5 @@ export const StyledUl = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: start;
-    gap: 26px;
+    gap: 26rem;
 `;
