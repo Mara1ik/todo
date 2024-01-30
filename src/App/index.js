@@ -6,13 +6,19 @@ import { StyledContainer } from "./style";
 
 function App() {
   const [taskList, setTaskList] = useState([]);
+  //   interface of task list
+  //   {
+  //     id: String;
+  //     isDone: Boolean;
+  //     text: String;
+  //   }
 
   return (
     <>
       <StyledContainer>
         <Header />
         <List taskList={taskList} setTaskList={setTaskList} />
-        <TaskInput setTaskList={setTaskList} />
+        <TaskInput taskList={taskList} setTaskList={setTaskList} />
       </StyledContainer>
     </>
   );

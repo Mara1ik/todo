@@ -2,30 +2,35 @@ import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
 function List({ taskList, setTaskList }) {
-  function onDeleteTask(taskId) {
-    const index = taskList.findIndex((task) => task.id === taskId);
-    document.getElementsByTagName("li")[index].remove();
-    const TasksArray = [...document.getElementsByTagName("li")];
-    const result = [];
-    TasksArray.forEach((element) => {
-      result.push({ id: element.id, value: element.textContent });
+  const deleteTask = (id) => {
+    setTaskList([...taskList.filter((task) => task.id !== id)]);
+  };
+
+  const updateTaskStatus = (id) => {
+    setTaskList((prevState) => {
+      const newState = prevState.map((task) => {
+        if (task.id === id) {
+          return { ...task, isDone: !task.isDone };
+        }
+        return task;
+      });
+
+      return newState;
     });
-    setTaskList(result);
-  }
+  };
 
   return (
     <StyledUl>
-      {taskList.map(
-        (task, i) =>
-          i < 11 && (
-            <ListItem
-              id={task.id}
-              task={task.value}
-              taskId={task.id}
-              onDeleteTask={onDeleteTask}
-            />
-          )
-      )}
+      {taskList.map((task) => (
+        <ListItem
+          key={task.id}
+          id={task.id}
+          text={task.text}
+          isDone={task.isDone}
+          deleteTask={deleteTask}
+          updateTaskStatus={updateTaskStatus}
+        />
+      ))}
     </StyledUl>
   );
 }

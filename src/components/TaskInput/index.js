@@ -1,25 +1,16 @@
-import { useRef, useEffect, useState, useId } from "react";
+import { useState, useRef } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
 
-function TaskInput({ setTaskList }) {
-  const inputRef = useRef(null);
-  const [inputValue, setInputValue] = useState();
-  const taskId = useId();
+function TaskInput({ setTaskList, taskList }) {
+  const inputRef = useRef();
+  const [inputValue, setInputValue] = useState("");
 
-  useEffect(() => {
-    inputRef.current.focus();
-  }, []);
-
-  function onAddTask() {
-    if (inputValue === "") return;
-    setTaskList((arr) => [...arr, { id: taskId, value: inputValue }]);
-    setInputValue("");
-  }
-
-  function submitHandler(e) {
+  function onSubmit(e) {
     e.preventDefault();
-    onAddTask();
+    const id = Date.now();
+    setTaskList([...taskList, { id: id, text: inputValue, isDone: false }]);
+    setInputValue("");
   }
 
   function onInputChange(e) {
@@ -27,7 +18,7 @@ function TaskInput({ setTaskList }) {
   }
 
   return (
-    <StyledForm onSubmit={submitHandler}>
+    <StyledForm onSubmit={onSubmit}>
       <StyledButton type="submit">
         <img src={pencilIcon} alt="pencil" />
       </StyledButton>
@@ -36,7 +27,7 @@ function TaskInput({ setTaskList }) {
         type="text"
         ref={inputRef}
         placeholder={"Write a task..."}
-        value={inputValue || ""}
+        value={inputValue}
       />
     </StyledForm>
   );
