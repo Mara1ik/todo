@@ -11,19 +11,19 @@ function TaskInput({ setTaskList }) {
     inputRef.current.focus();
   }, []);
 
-  function addTask() {
+  function onAddTask() {
     if (inputValue === "") return;
-    setTaskList((arr) => [...arr, {id: taskId, value: inputValue}]);
-    setInputValue('');
+    setTaskList((arr) => [...arr, { id: taskId, value: inputValue }]);
+    setInputValue("");
   }
 
   function submitHandler(e) {
     e.preventDefault();
-    addTask();
+    onAddTask();
   }
 
   function onInputChange(e) {
-    setInputValue(e.target.value)
+    setInputValue(e.target.value);
   }
 
   return (
@@ -36,7 +36,7 @@ function TaskInput({ setTaskList }) {
         type="text"
         ref={inputRef}
         placeholder={"Write a task..."}
-        value={inputValue || ''}
+        value={inputValue || ""}
       />
     </StyledForm>
   );

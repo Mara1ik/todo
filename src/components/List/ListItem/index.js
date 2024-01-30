@@ -2,16 +2,16 @@ import { useRef, useState } from "react";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
 
-function ListItem({ task, taskId, deleteTask }) {
+function ListItem({ task, taskId, onDeleteTask }) {
   const checkboxRef = useRef(null);
   const [isDone, setIsDone] = useState(false);
 
-  function taskDone() {
+  function onTaskDone() {
     setIsDone(!isDone);
   }
 
   function onClick() {
-    deleteTask(taskId);
+    onDeleteTask(taskId);
   }
 
   return (
@@ -20,7 +20,7 @@ function ListItem({ task, taskId, deleteTask }) {
         type="checkbox"
         ref={checkboxRef}
         id={task}
-        onClick={taskDone}
+        onClick={onTaskDone}
       />
       <StyledLabel className={isDone && "checked"} for={task}>
         {task}

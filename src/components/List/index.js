@@ -2,7 +2,7 @@ import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
 function List({ taskList, setTaskList }) {
-  function deleteTask(taskId) {
+  function onDeleteTask(taskId) {
     const index = taskList.findIndex((task) => task.id === taskId);
     document.getElementsByTagName("li")[index].remove();
     const TasksArray = [...document.getElementsByTagName("li")];
@@ -10,7 +10,7 @@ function List({ taskList, setTaskList }) {
     TasksArray.forEach((element) => {
       result.push({ id: element.id, value: element.textContent });
     });
-    setTaskList(result)
+    setTaskList(result);
   }
 
   return (
@@ -22,7 +22,7 @@ function List({ taskList, setTaskList }) {
               id={task.id}
               task={task.value}
               taskId={task.id}
-              deleteTask={deleteTask}
+              onDeleteTask={onDeleteTask}
             />
           )
       )}
