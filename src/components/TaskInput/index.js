@@ -1,11 +1,10 @@
-import { useRef, useEffect, useState, useId } from "react";
+import { useRef, useEffect, useState } from "react";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
 
 function TaskInput({ setTaskList }) {
   const inputRef = useRef(null);
   const [inputValue, setInputValue] = useState();
-  const taskId = useId();
 
   useEffect(() => {
     inputRef.current.focus();
@@ -13,11 +12,11 @@ function TaskInput({ setTaskList }) {
 
   function onAddTask() {
     if (inputValue === "") return;
-    setTaskList((arr) => [...arr, { id: taskId, value: inputValue }]);
+    setTaskList((arr) => [...arr, { id: Math.random(), value: inputValue }]);
     setInputValue("");
   }
 
-  function submitHandler(e) {
+  function onFormSubmit(e) {
     e.preventDefault();
     onAddTask();
   }
@@ -27,7 +26,7 @@ function TaskInput({ setTaskList }) {
   }
 
   return (
-    <StyledForm onSubmit={submitHandler}>
+    <StyledForm onSubmit={onFormSubmit}>
       <StyledButton type="submit">
         <img src={pencilIcon} alt="pencil" />
       </StyledButton>
