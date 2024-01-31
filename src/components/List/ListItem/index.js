@@ -1,14 +1,13 @@
-import { useRef, useState, useId } from "react";
+import { useRef, useId } from "react";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
 
-function ListItem({ task, taskId, deleteTask }) {
+function ListItem({ task, taskId, deleteTask, doTask, isDone }) {
   const checkboxRef = useRef(null);
   const inputId = useId();
-  const [isDone, setIsDone] = useState(false);
 
   function onCheckboxClick() {
-    setIsDone(!isDone);
+    doTask(taskId);
   }
 
   function onButtonClick() {
