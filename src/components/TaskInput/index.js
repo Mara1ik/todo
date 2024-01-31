@@ -10,15 +10,11 @@ function TaskInput({ setTaskList }) {
     inputRef.current.focus();
   }, []);
 
-  function onAddTask() {
-    if (inputValue === "") return;
-    setTaskList((arr) => [...arr, { id: Math.random(), value: inputValue }]);
-    setInputValue("");
-  }
-
   function onFormSubmit(e) {
     e.preventDefault();
-    onAddTask();
+    if (inputValue === "") return;
+    setTaskList((arr) => [...arr, { id: Math.random(), value: inputValue, isDone: false }]);
+    setInputValue("");
   }
 
   function onInputChange(e) {

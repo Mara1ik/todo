@@ -1,32 +1,23 @@
-import { useRef, useId } from "react";
+import { useRef } from "react";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
 
-function ListItem({ task, taskId, deleteTask, doTask, isDone }) {
+function ListItem({ taskValue, taskId, deleteTask, doTask, isDone }) {
   const checkboxRef = useRef(null);
-  const inputId = useId();
-
-  function onCheckboxClick() {
-    doTask(taskId);
-  }
-
-  function onButtonClick() {
-    deleteTask(taskId);
-  }
 
   return (
     <StyledLi>
       <StyledInput
         type="checkbox"
         ref={checkboxRef}
-        id={inputId}
-        onClick={onCheckboxClick}
+        id={taskId}
+        onClick={() => doTask(taskId)}
       />
-      <StyledLabel className={isDone && "checked"} for={inputId}>
-        {task}
+      <StyledLabel className={isDone && "checked"} for={taskId}>
+        {taskValue}
       </StyledLabel>
       {isDone && (
-        <StyledButton type="button" onClick={onButtonClick}>
+        <StyledButton type="button" onClick={() => deleteTask(taskId)}>
           <img src={binIcon} alt="Trash bin" />
         </StyledButton>
       )}
