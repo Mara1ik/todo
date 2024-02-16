@@ -1,21 +1,9 @@
+import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
-function List({ taskList, setTaskList }) {
-  function deleteTask(taskId) {
-    setTaskList((prev) => {
-      return prev.filter((task) => task.id !== taskId);
-    });
-  }
-
-  function doTask(taskId) {
-    setTaskList((prev) => {
-      return prev.map((task) => {
-        if (task.id !== taskId) return task;
-        return { ...task, isDone: !task.isDone };
-      });
-    });
-  }
+function List() {
+  const taskList = useSelector((state) => state.taskList);
 
   return (
     <StyledUl>
@@ -24,8 +12,6 @@ function List({ taskList, setTaskList }) {
           key={task.id}
           taskValue={task.value}
           taskId={task.id}
-          deleteTask={deleteTask}
-          doTask={doTask}
           isDone={task.isDone}
         />
       ))}

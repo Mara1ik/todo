@@ -1,8 +1,11 @@
 import { useRef, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
+import { addTask } from "../../store";
 
-function TaskInput({ setTaskList }) {
+function TaskInput() {
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
   const [inputValue, setInputValue] = useState();
 
@@ -13,7 +16,7 @@ function TaskInput({ setTaskList }) {
   function onFormSubmit(e) {
     e.preventDefault();
     if (inputValue === "") return;
-    setTaskList((arr) => [...arr, { id: Math.random(), value: inputValue, isDone: false }]);
+    dispatch(addTask(inputValue));
     setInputValue("");
   }
 
