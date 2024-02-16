@@ -8,7 +8,7 @@ export const StyledLi = styled.li`
 
   .checked {
     text-decoration: line-through;
-    color: #B5B5BA;
+    color: #b5b5ba;
   }
 `;
 
@@ -34,5 +34,5 @@ export const StyledButton = styled.button`
   height: 24rem;
   align-items: center;
   position: absolute;
-  right: 0; 
-`
+  right: 0;
+`;

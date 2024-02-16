@@ -20,7 +20,10 @@ function ListItem({ taskValue, taskId, isDone }) {
         {taskValue}
       </StyledLabel>
       {isDone && (
-        <StyledButton type="button" onClick={() => dispatch(deleteTask(taskId))}>
+        <StyledButton
+          type="button"
+          onClick={() => dispatch(deleteTask(taskId))}
+        >
           <img src={binIcon} alt="Trash bin" />
         </StyledButton>
       )}

@@ -7,8 +7,6 @@ export const StyledHeaderWrapper = styled.div`
   margin-bottom: 33rem;
 `;
 
-
-
 export const StyledLine = styled.div`
   width: 179rem;
   height: 1rem;
