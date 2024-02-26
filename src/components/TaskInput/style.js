@@ -1,19 +1,28 @@
 import styled from "styled-components";
 
-export const StyledTaskInputWrapper = styled.div`
+export const StyledForm = styled.form`
   display: flex;
+  align-items: center;
   position: absolute;
-  bottom: 35px;
+  bottom: 35rem;
 `;
 
 export const StyledInput = styled.input`
-  margin-left: 3px;
+  display: block;
+  margin-left: 3rem;
   border: none;
-  width: 100%;
+  width: 350rem;
+  height: 20rem;
   padding: 0;
 `;
 
 export const StyledButton = styled.button`
-  height: 25px;
+  height: 25rem;
   align-items: center;
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
 `;

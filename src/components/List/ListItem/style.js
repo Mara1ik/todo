@@ -8,17 +8,18 @@ export const StyledLi = styled.li`
 
   .checked {
     text-decoration: line-through;
-    color: #B5B5BA;
+    color: #b5b5ba;
   }
 `;
 
 export const StyledInput = styled.input`
   margin: 0;
-  margin-right: 9px;
-  width: 20px;
+  margin-right: 9rem;
+  width: 20rem;
   aspect-ratio: 1;
-  border: 2px solid #b5b5ba;
+  border: 2rem solid #b5b5ba;
   cursor: pointer;
+  accent-color: grey;
 `;
 
 export const StyledLabel = styled.label`
@@ -30,8 +31,8 @@ export const StyledLabel = styled.label`
 `;
 
 export const StyledButton = styled.button`
-  height: 24px;
+  height: 24rem;
   align-items: center;
   position: absolute;
-  right: 0; 
-`
+  right: 0;
+`;

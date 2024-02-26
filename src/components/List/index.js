@@ -1,18 +1,20 @@
+import { useSelector } from "react-redux";
 import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
-function List({ taskList, setTaskList }) {
-
-  function deleteTask(task) {
-    setTaskList((arr) => arr.filter((item) => item !== task))
-  }
+function List() {
+  const taskList = useSelector((state) => state.taskList);
 
   return (
     <StyledUl>
-      {taskList.map(
-        (task, i) =>
-          i < 11 && <ListItem task={task} id={task} deleteTask={deleteTask} />
-      )}
+      {taskList.map((task, i) => (
+        <ListItem
+          key={task.id}
+          taskValue={task.value}
+          taskId={task.id}
+          isDone={task.isDone}
+        />
+      ))}
     </StyledUl>
   );
 }

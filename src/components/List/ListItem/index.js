@@ -1,30 +1,29 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
+import { useDispatch } from "react-redux";
+import { deleteTask, doTask } from "../../../store";
 
-function ListItem({ task, deleteTask }) {
+function ListItem({ taskValue, taskId, isDone }) {
   const checkboxRef = useRef(null);
-  const [isDone, setIsDone] = useState(false);
-
-  function taskDone() {
-    setIsDone(!isDone);
-  }
-
-  function onClick() {
-    deleteTask(task);
-    setIsDone(false)
-    const checkbox = checkboxRef.current;
-    checkbox.checked = false;
-  }
+  const dispatch = useDispatch();
 
   return (
     <StyledLi>
-      <StyledInput type="checkbox" ref={checkboxRef} id={task} onClick={taskDone} />
-      <StyledLabel className={isDone && "checked"} for={task}>
-        {task}
+      <StyledInput
+        type="checkbox"
+        ref={checkboxRef}
+        id={taskId}
+        onClick={() => dispatch(doTask(taskId))}
+      />
+      <StyledLabel className={isDone && "checked"} for={taskId}>
+        {taskValue}
       </StyledLabel>
       {isDone && (
-        <StyledButton type="button" onClick={onClick}>
+        <StyledButton
+          type="button"
+          onClick={() => dispatch(deleteTask(taskId))}
+        >
           <img src={binIcon} alt="Trash bin" />
         </StyledButton>
       )}

@@ -1,23 +1,42 @@
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import pencilIcon from "./../../img/pencilIcon.svg";
-import { StyledTaskInputWrapper, StyledInput, StyledButton } from "./style";
+import { StyledForm, StyledInput, StyledButton } from "./style";
+import { addTask } from "../../store";
 
-function TaskInput({ setTaskList }) {
+function TaskInput() {
+  const dispatch = useDispatch();
   const inputRef = useRef(null);
-  function addTask() {
-    const value = inputRef.current.value;
-    if (value === "") return;
-    setTaskList((arr) => [...arr, value]);
-    inputRef.current.value = "";
+  const [inputValue, setInputValue] = useState();
+
+  useEffect(() => {
+    inputRef.current.focus();
+  }, []);
+
+  function onFormSubmit(e) {
+    e.preventDefault();
+    if (inputValue === "") return;
+    dispatch(addTask(inputValue));
+    setInputValue("");
+  }
+
+  function onInputChange(e) {
+    setInputValue(e.target.value);
   }
 
   return (
-    <StyledTaskInputWrapper>
-      <StyledButton type="button" onClick={addTask}>
+    <StyledForm onSubmit={onFormSubmit}>
+      <StyledButton type="submit">
         <img src={pencilIcon} alt="pencil" />
       </StyledButton>
-      <StyledInput type="text" ref={inputRef} placeholder="Write a task..." />
-    </StyledTaskInputWrapper>
+      <StyledInput
+        onChange={onInputChange}
+        type="text"
+        ref={inputRef}
+        placeholder={"Write a task..."}
+        value={inputValue || ""}
+      />
+    </StyledForm>
   );
 }
 
