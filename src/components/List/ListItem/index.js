@@ -1,8 +1,8 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { doTaskAction, deleteTaskAction } from "../../../store";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
-import { useDispatch } from "react-redux";
-import { deleteTask, doTask } from "../../../store";
 
 function ListItem({ taskValue, taskId, isDone }) {
   const checkboxRef = useRef(null);
@@ -14,7 +14,7 @@ function ListItem({ taskValue, taskId, isDone }) {
         type="checkbox"
         ref={checkboxRef}
         id={taskId}
-        onClick={() => dispatch(doTask(taskId))}
+        onClick={() => dispatch(doTaskAction(taskId))}
       />
       <StyledLabel className={isDone && "checked"} for={taskId}>
         {taskValue}
@@ -22,7 +22,7 @@ function ListItem({ taskValue, taskId, isDone }) {
       {isDone && (
         <StyledButton
           type="button"
-          onClick={() => dispatch(deleteTask(taskId))}
+          onClick={() => dispatch(deleteTaskAction(taskId))}
         >
           <img src={binIcon} alt="Trash bin" />
         </StyledButton>

@@ -3,7 +3,7 @@ import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
 function List() {
-  const taskList = useSelector((state) => state.taskList);
+  const taskList = useSelector((state) => state);
 
   return (
     <StyledUl>
