@@ -1,8 +1,8 @@
 import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { addTask } from "../../store";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
-import { addTask } from "../../store";
 
 function TaskInput() {
   const dispatch = useDispatch();

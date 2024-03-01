@@ -1,8 +1,8 @@
 import { useRef } from "react";
+import { useDispatch } from "react-redux";
+import { doTask, deleteTask } from "../../../store";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
-import { useDispatch } from "react-redux";
-import { deleteTask, doTask } from "../../../store";
 
 function ListItem({ taskValue, taskId, isDone }) {
   const checkboxRef = useRef(null);
