@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
-import { addTaskAction } from "../../store";
+import { addTask } from "../../store";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledButton } from "./style";
 
@@ -16,7 +16,7 @@ function TaskInput() {
   function onFormSubmit(e) {
     e.preventDefault();
     if (inputValue === "") return;
-    dispatch(addTaskAction(inputValue));
+    dispatch(addTask(inputValue));
     setInputValue("");
   }
 
