@@ -7,5 +7,7 @@ export const StyledContainer = styled.div`
   margin-top: 20rem;
   padding: 35rem 32rem;
   border: 1rem solid black;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
 `;

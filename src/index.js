@@ -5,9 +5,19 @@ import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/HomePage.js";
 import GlobalStyle from "./globalStyle";
 import store from "./store";
+import AddTaskPage from "./pages/AddTaskPage.js";
+import ErrorPage from "./pages/ErrorPage.js";
 
 const router = createBrowserRouter([
-  { path: "/", element: <HomePage />, errorElement: <div>Ops...</div> },
+  {
+    path: "/",
+    element: <HomePage />,
+    errorElement: <ErrorPage />,
+  },
+  {
+    path: "/addTask",
+    element: <AddTaskPage />,
+  },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
