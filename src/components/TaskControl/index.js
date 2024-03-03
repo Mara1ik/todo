@@ -20,6 +20,7 @@ function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
   }
 
   function onConfirmClick() {
+    if (taskEdit.title === "") return;
     dispatch(
       editTask({
         id: taskValue.id,
@@ -42,9 +43,11 @@ function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
     <StyledTaskControlWrapper>
       {taskEdit.isEditing ? (
         <>
-          <StyledButton onClick={onAddDescriptionClick} type="button">
-            Add description
-          </StyledButton>
+          {taskEdit.description && (
+            <StyledButton onClick={onAddDescriptionClick} type="button">
+              Add description
+            </StyledButton>
+          )}
           <StyledButton onClick={onConfirmClick} type="button">
             Confirm
           </StyledButton>
