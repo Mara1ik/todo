@@ -20,7 +20,7 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 700;
     }
 
-    h1, h2, h3 {
+    h1, h2, h3, h4 {
         margin: 0;
     }
 

@@ -44,6 +44,7 @@ export const StyledButton = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 3rem;
   border: 2rem solid #413f3f;
   border-radius: 15px;
   opacity: 0.6;
@@ -53,6 +54,6 @@ export const StyledButton = styled.button`
   }
 
   img {
-    display: block;
+    height: 16rem;
   }
 `;

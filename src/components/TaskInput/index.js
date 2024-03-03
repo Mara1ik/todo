@@ -44,7 +44,7 @@ function TaskInput() {
       />
       <h3>Description</h3>
       <StyledTextarea
-        onChange={onDescriptionInputChange}
+         onChange={onDescriptionInputChange}
         placeholder={"Write description..."}
         value={taskValue.description || ""}
       />

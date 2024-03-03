@@ -1,18 +1,38 @@
 import { useSelector } from "react-redux";
-import { StyledTaskWrapper } from "./style";
+import { StyledTaskWrapper, StyledInput, StyledStatus } from "./style";
 
-function TaskInput({ taskId }) {
+function TaskInput({ taskId, isEditing }) {
   const taskValue = useSelector((state) => {
-    state.taskList.forEach((task) => {
-      if (task.id === taskId) console.log(task);
-    });
+    for (const task of state.taskList) {
+      if (task.id === taskId) return task;
+    }
   });
+
+  const Title = isEditing ? (
+    <StyledInput type="text" value={taskValue.value.title} />
+  ) : (
+    <span>{taskValue.value.title}</span>
+  );
+
+  const Description = isEditing ? (
+    <StyledInput type="text" value={taskValue.value.description} />
+  ) : (
+    <span>{taskValue.value.description}</span>
+  );
+
   return (
     <StyledTaskWrapper>
       <h2>Task title</h2>
-      <h4>{taskValue}</h4>
-      <h3>Description</h3>
-      <h4>taskdescription</h4>
+      {Title}
+      {taskValue.value.description && (
+        <>
+          <h3>Description</h3>
+          {Description}
+        </>
+      )}
+      <StyledStatus $isDone={taskValue.isDone}>
+        {taskValue.isDone ? "Complete" : "Incomplete"}
+      </StyledStatus>
     </StyledTaskWrapper>
   );
 }

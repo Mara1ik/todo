@@ -7,6 +7,8 @@ const defaultState = {
 const ADD_TASK = "ADD_TASK";
 const DO_TASK = "DO_TASK";
 const DELETE_TASK = "DELETE_TASK";
+const EDIT_TASK_TITLE = "EDIT_TASK_TITLE";
+const EDIT_TASK_DESCRIPTION = "EDIT_TASK_DESCRIPTION";
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -37,6 +39,17 @@ const reducer = (state = defaultState, action) => {
       return {
         ...state,
         taskList: state.taskList.filter((task) => task.id !== action.payload),
+      };
+    case EDIT_TASK_TITLE:
+      return {
+        ...state,
+        taskList: state.taskList.map((task) => {
+          if (task.id !== action.payload) return task;
+          return {
+            ...task,
+            value: { ...task.value, title: action.payload.title },
+          };
+        }),
       };
     default:
       return state;

@@ -22,4 +22,8 @@ export const StyledNavLinkWrapper = styled.div`
     gap: 3rem;
     padding: 5rem;
   }
+
+  img {
+    height: 24rem;
+  }
 `;
