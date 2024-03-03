@@ -1,13 +1,16 @@
 import { useRef, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { addTask } from "../../store";
 import pencilIcon from "./../../img/pencilIcon.svg";
-import { StyledForm, StyledInput, StyledButton } from "./style";
+import { StyledForm, StyledInput, StyledTextarea, StyledButton } from "./style";
 
 function TaskInput() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const inputRef = useRef(null);
-  const [inputValue, setInputValue] = useState();
+  const defaultTaskValue = { title: "", description: "" };
+  const [taskValue, setTaskValue] = useState(defaultTaskValue);
 
   useEffect(() => {
     inputRef.current.focus();
@@ -15,27 +18,40 @@ function TaskInput() {
 
   function onFormSubmit(e) {
     e.preventDefault();
-    if (inputValue === "") return;
-    dispatch(addTask(inputValue));
-    setInputValue("");
+    if (taskValue.title === "") return;
+    dispatch(addTask(taskValue));
+    navigate("/");
+    setTaskValue(defaultTaskValue);
   }
 
-  function onInputChange(e) {
-    setInputValue(e.target.value);
+  function onTitleInputChange(e) {
+    setTaskValue((prev) => ({ ...prev, title: e.target.value }));
+  }
+
+  function onDescriptionInputChange(e) {
+    setTaskValue((prev) => ({ ...prev, description: e.target.value }));
   }
 
   return (
     <StyledForm onSubmit={onFormSubmit}>
-      <StyledButton type="submit">
-        <img src={pencilIcon} alt="pencil" />
-      </StyledButton>
+      <h2>Task title</h2>
       <StyledInput
-        onChange={onInputChange}
+        onChange={onTitleInputChange}
         type="text"
         ref={inputRef}
-        placeholder={"Write a task..."}
-        value={inputValue || ""}
+        placeholder={"Write title..."}
+        value={taskValue.title || ""}
       />
+      <h3>Description</h3>
+      <StyledTextarea
+        onChange={onDescriptionInputChange}
+        placeholder={"Write description..."}
+        value={taskValue.description || ""}
+      />
+      <StyledButton type="submit">
+        <span>Add task</span>
+        <img src={pencilIcon} alt="pencil" />
+      </StyledButton>
     </StyledForm>
   );
 }

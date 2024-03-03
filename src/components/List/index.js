@@ -10,7 +10,7 @@ function List() {
       {taskList.map((task, i) => (
         <ListItem
           key={task.id}
-          taskValue={task.value}
+          taskValue={task.value.title}
           taskId={task.id}
           isDone={task.isDone}
         />

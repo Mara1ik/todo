@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 700;
     }
 
+    h1, h2, h3 {
+        margin: 0;
+    }
+
     ul {
         list-style: none;
         margin: 0;

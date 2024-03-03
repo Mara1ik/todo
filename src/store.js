@@ -15,7 +15,14 @@ const reducer = (state = defaultState, action) => {
         ...state,
         taskList: [
           ...state.taskList,
-          { id: Date.now(), value: action.payload, isDone: false },
+          {
+            id: Date.now(),
+            value: {
+              title: action.payload.title,
+              description: action.payload.description,
+            },
+            isDone: false,
+          },
         ],
       };
     case DO_TASK:

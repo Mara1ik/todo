@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 export const StyledLi = styled.li`
   display: flex;
@@ -22,7 +23,7 @@ export const StyledInput = styled.input`
   accent-color: grey;
 `;
 
-export const StyledLabel = styled.label`
+export const StyledLink = styled(Link)`
   cursor: pointer;
 
   -webkit-user-select: none;
