@@ -55,7 +55,7 @@ function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
             onClick={() => dispatch(doTask(taskValue.id))}
             type="button"
           >
-            <span>{!taskValue.isDone ? "Close task" : "Open task"}</span>
+            <span>{taskValue.isDone ? "Open task" : "Close task"}</span>
             <img src={check} alt="Check mark"></img>
           </StyledButton>
           <StyledButton onClick={onEditClick} type="button">

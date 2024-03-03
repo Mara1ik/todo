@@ -34,7 +34,7 @@ export const StyledStatus = styled.div`
   right: 3rem;
   border: 2px solid #413f3f;
   border-radius: 10px;
-  background-color: ${(props) => (props.$isDone ? "#abf7b1" : "#f1807e")};
+  background-color: ${(props) => (props.$isDone ?  "#f1807e" : "#abf7b1" )};
   padding: 3rem;
   text-align: center;
 `;
