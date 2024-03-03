@@ -21,6 +21,7 @@ function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
 
   function onConfirmClick() {
     if (taskEdit.title === "") return;
+    console.log(taskEdit.description);
     dispatch(
       editTask({
         id: taskValue.id,
@@ -43,7 +44,7 @@ function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
     <StyledTaskControlWrapper>
       {taskEdit.isEditing ? (
         <>
-          {taskEdit.description && (
+          {!taskValue.value.description && (
             <StyledButton onClick={onAddDescriptionClick} type="button">
               Add description
             </StyledButton>
