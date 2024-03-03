@@ -40,7 +40,7 @@ function TaskInput({ taskValue, taskEdit, setTaskEdit }) {
         </>
       )}
       <StyledStatus $isDone={taskValue.isDone}>
-        {taskValue.isDone ? "Complete" : "Incomplete"}
+        {taskValue.isDone ? "Closed" : "Opened"}
       </StyledStatus>
     </StyledTaskWrapper>
   );
