@@ -2,10 +2,13 @@ import styled from "styled-components";
 
 export const StyledTaskWrapper = styled.div`
   position: relative;
-  min-height: 140rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  gap: 20rem;
+
+  span {
+    height: 20rem;
+  }
 `;
 
 export const StyledInput = styled.input`
@@ -15,7 +18,8 @@ export const StyledInput = styled.input`
   border-radius: 4px;
   width: 100%;
   height: 20rem;
-  padding: 3rem;
+  font-size: 15rem;
+  padding-left: 0px;
   opacity: 0.6;
 
   &:focus {

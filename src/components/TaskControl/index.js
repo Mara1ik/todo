@@ -1,39 +1,73 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { StyledTaskControlWrapper, StyledButton } from "./style";
 import check from "./../../img/check.svg";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import binIcon from "./../../img/binIcon.svg";
-import { deleteTask, doTask } from "../../store";
+import { deleteTask, doTask, editTask } from "../../store";
 import { useNavigate } from "react-router-dom";
 
-function TaskControl({ taskId, edit }) {
+function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const taskValue = useSelector((state) => {
-    for (const task of state.taskList) {
-      if (task.id === taskId) return task;
-    }
-  });
 
-  function onDelete() {
+  function onAddDescriptionClick() {
+    dispatch(
+      editTask({
+        id: taskValue.id,
+        value: { title: taskEdit.title, description: "KEK" },
+      })
+    );
+  }
+
+  function onConfirmClick() {
+    dispatch(
+      editTask({
+        id: taskValue.id,
+        value: { title: taskEdit.title, description: taskEdit.description },
+      })
+    );
+    setTaskEdit((prev) => ({ ...prev, isEditing: false }));
+  }
+
+  function onEditClick() {
+    setTaskEdit((prev) => ({ ...prev, isEditing: !prev.isEditing }));
+  }
+
+  function onDeleteClick() {
     navigate("/");
-    dispatch(deleteTask(taskId));
+    dispatch(deleteTask(taskValue.id));
   }
 
   return (
     <StyledTaskControlWrapper>
-      <StyledButton onClick={() => dispatch(doTask(taskId))} type="button">
-        <span>{taskValue.isDone ? "Close task" : "Open task"}</span>
-        <img src={check} alt="Check mark"></img>
-      </StyledButton>
-      <StyledButton onClick={() => edit((prev) => !prev)} type="button">
-        <span>Edit task</span>
-        <img src={pencilIcon} alt="Pencil"></img>
-      </StyledButton>
-      <StyledButton onClick={onDelete} type="button">
-        <span>Delete task</span>
-        <img src={binIcon} alt="Bin"></img>
-      </StyledButton>
+      {taskEdit.isEditing ? (
+        <>
+          <StyledButton onClick={onAddDescriptionClick} type="button">
+            Add description
+          </StyledButton>
+          <StyledButton onClick={onConfirmClick} type="button">
+            Confirm
+          </StyledButton>
+        </>
+      ) : (
+        <>
+          <StyledButton
+            onClick={() => dispatch(doTask(taskValue.id))}
+            type="button"
+          >
+            <span>{taskValue.isDone ? "Close task" : "Open task"}</span>
+            <img src={check} alt="Check mark"></img>
+          </StyledButton>
+          <StyledButton onClick={onEditClick} type="button">
+            <span>Edit task</span>
+            <img src={pencilIcon} alt="Pencil"></img>
+          </StyledButton>
+          <StyledButton onClick={onDeleteClick} type="button">
+            <span>Delete task</span>
+            <img src={binIcon} alt="Bin"></img>
+          </StyledButton>
+        </>
+      )}
     </StyledTaskControlWrapper>
   );
 }

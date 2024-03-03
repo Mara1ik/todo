@@ -1,21 +1,30 @@
-import { useSelector } from "react-redux";
 import { StyledTaskWrapper, StyledInput, StyledStatus } from "./style";
 
-function TaskInput({ taskId, isEditing }) {
-  const taskValue = useSelector((state) => {
-    for (const task of state.taskList) {
-      if (task.id === taskId) return task;
-    }
-  });
+function TaskInput({ taskValue, taskEdit, setTaskEdit }) {
+  function onTitleInputChange(e) {
+    setTaskEdit((prev) => ({ ...prev, title: e.target.value }));
+  }
 
-  const Title = isEditing ? (
-    <StyledInput type="text" value={taskValue.value.title} />
+  function onDescriptionInputChange(e) {
+    setTaskEdit((prev) => ({ ...prev, description: e.target.value }));
+  }
+
+  const Title = taskEdit.isEditing ? (
+    <StyledInput
+      onChange={onTitleInputChange}
+      type="text"
+      value={taskEdit.title}
+    />
   ) : (
     <span>{taskValue.value.title}</span>
   );
 
-  const Description = isEditing ? (
-    <StyledInput type="text" value={taskValue.value.description} />
+  const Description = taskEdit.isEditing ? (
+    <StyledInput
+      onChange={onDescriptionInputChange}
+      type="text"
+      value={taskEdit.description}
+    />
   ) : (
     <span>{taskValue.value.description}</span>
   );
