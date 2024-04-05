@@ -2,13 +2,12 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import HomePage from "./pages/HomePage.js";
 import GlobalStyle from "./globalStyle";
 import store from "./store";
-import HomePage from "./pages/HomePage.js";
 import AddTaskPage from "./pages/AddTaskPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
 import TaskPage from "./pages/TaskPage.js";
-import WeatherPage from "./pages/WeatherPage.js";
 
 const router = createBrowserRouter([
   {
@@ -23,10 +22,6 @@ const router = createBrowserRouter([
   {
     path: "/:taskId",
     element: <TaskPage />,
-  },
-  {
-    path: "/weather",
-    element: <WeatherPage />,
   },
 ]);
 
