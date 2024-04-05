@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Page from "../components/Page";
-import Header from "../components/Header";
 import Task from "../components/Task";
 import TaskControl from "../components/TaskControl";
 
@@ -20,7 +19,6 @@ function TaskPage() {
   });
   return (
     <Page>
-      <Header />
       <Task
         taskValue={taskValue}
         taskEdit={taskEdit}

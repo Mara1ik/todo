@@ -1,5 +1,5 @@
 import fileIcon from "./../../img/fileIcon.svg";
-import arrow from "./../../img/arrow.svg";
+import sunIcon from "./../../img/sunIcon.svg";
 import { StyledHeaderWrapper, StyledLine } from "./style";
 import StyledLinkWithImg from "../StyledLinks/StyledLinkWithImg";
 
@@ -7,11 +7,13 @@ function Header() {
   return (
     <StyledHeaderWrapper>
       <StyledLinkWithImg to="/">
-        <img src={fileIcon} alt="file icon" />
+        <img src={fileIcon} alt="File icon" />
       </StyledLinkWithImg>
       <h1>To Do app</h1>
       <StyledLine />
-      <img src={arrow} alt="arrow down" />
+      <StyledLinkWithImg to="/weather">
+        <img src={sunIcon} alt="Sun icon" />
+      </StyledLinkWithImg>
     </StyledHeaderWrapper>
   );
 }

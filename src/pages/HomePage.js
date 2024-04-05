@@ -1,4 +1,3 @@
-import Header from "../components/Header";
 import List from "../components/List";
 import Page from "../components/Page";
 import StyledNavLink from "../components/StyledLinks/StyledNavLink";
@@ -8,7 +7,6 @@ function HomePage() {
   return (
     <>
       <Page>
-        <Header />
         <List />
         <StyledNavLink to="/addTask" bottomPlace>
           <span>Add new task</span>
