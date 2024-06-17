@@ -20,6 +20,10 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 700;
     }
 
+    h1, h2, h3, h4 {
+        margin: 0;
+    }
+
     ul {
         list-style: none;
         margin: 0;
@@ -31,6 +35,11 @@ const GlobalStyle = createGlobalStyle`
         background: transparent;
         padding: 0;
         cursor: pointer;
+    }
+
+    a {
+        color: inherit; 
+        text-decoration: none;
     }
 `;
 

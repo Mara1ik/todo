@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { doTask, deleteTask } from "../../../store";
 import binIcon from "./../../../img/binIcon.svg";
-import { StyledLi, StyledInput, StyledLabel, StyledButton } from "./style";
+import { StyledLi, StyledInput, StyledLink, StyledButton } from "./style";
 
 function ListItem({ taskValue, taskId, isDone }) {
   const checkboxRef = useRef(null);
@@ -13,12 +13,12 @@ function ListItem({ taskValue, taskId, isDone }) {
       <StyledInput
         type="checkbox"
         ref={checkboxRef}
-        id={taskId}
         onClick={() => dispatch(doTask(taskId))}
+        checked={isDone}
       />
-      <StyledLabel className={isDone && "checked"} for={taskId}>
+      <StyledLink to={"/" + taskId} className={isDone && "checked"}>
         {taskValue}
-      </StyledLabel>
+      </StyledLink>
       {isDone && (
         <StyledButton
           type="button"
