@@ -1,12 +1,12 @@
 import Page from "../components/Page";
-import StyledNavLink from "../components/StyledLinks/StyledNavLink";
+import NavLink from "../components/Links/NavLink";
 
 function ErrorPage() {
   return (
     <Page>
       <span>Ops...</span>
       <span>U are not supposed to be here</span>
-      <StyledNavLink>Home page</StyledNavLink>
+      <NavLink>Home page</NavLink>
     </Page>
   );
 }

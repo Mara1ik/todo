@@ -1,6 +1,6 @@
 import List from "../components/List";
 import Page from "../components/Page";
-import StyledNavLink from "../components/StyledLinks/StyledNavLink";
+import NavLink from "../components/Links/NavLink";
 import pencilIcon from "../img/pencilIcon.svg";
 
 function HomePage() {
@@ -8,10 +8,10 @@ function HomePage() {
     <>
       <Page>
         <List />
-        <StyledNavLink to="/addTask" bottomPlace>
+        <NavLink to="/addTask" bottomPlace>
           <span>Add new task</span>
           <img src={pencilIcon} alt="Pencil"></img>
-        </StyledNavLink>
+        </NavLink>
       </Page>
     </>
   );

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { StyledNavLinkWrapper } from "./style";
 
-function StyledNavLink({ to, bottomPlace = false, children }) {
+function NavLink({ to, bottomPlace = false, children }) {
   return (
     <StyledNavLinkWrapper $isBottomPlace={bottomPlace}>
       <Link to={to}>{children}</Link>
@@ -9,4 +9,4 @@ function StyledNavLink({ to, bottomPlace = false, children }) {
   );
 }
 
-export default StyledNavLink;
+export default NavLink;
