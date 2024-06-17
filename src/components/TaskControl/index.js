@@ -1,76 +1,18 @@
-import { useDispatch } from "react-redux";
-import { StyledTaskControlWrapper, StyledButton } from "./style";
-import check from "./../../img/check.svg";
-import pencilIcon from "./../../img/pencilIcon.svg";
-import binIcon from "./../../img/binIcon.svg";
-import { deleteTask, doTask, editTask } from "../../store";
-import { useNavigate } from "react-router-dom";
+import { StyledTaskControlWrapper } from "./style";
+import EditControl from "./EditControl";
+import ShowControl from "./ShowControl";
 
 function TaskControl({ taskValue, taskEdit, setTaskEdit }) {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-
-  function onAddDescriptionClick() {
-    dispatch(
-      editTask({
-        id: taskValue.id,
-        value: { title: taskEdit.title, description: "KEK" },
-      })
-    );
-  }
-
-  function onConfirmClick() {
-    if (taskEdit.title === "") return;
-    console.log(taskEdit.description);
-    dispatch(
-      editTask({
-        id: taskValue.id,
-        value: { title: taskEdit.title, description: taskEdit.description },
-      })
-    );
-    setTaskEdit((prev) => ({ ...prev, isEditing: false }));
-  }
-
-  function onEditClick() {
-    setTaskEdit((prev) => ({ ...prev, isEditing: !prev.isEditing }));
-  }
-
-  function onDeleteClick() {
-    navigate("/");
-    dispatch(deleteTask(taskValue.id));
-  }
-
   return (
     <StyledTaskControlWrapper>
-      {taskEdit.isEditing ? (
-        <>
-          {!taskValue.value.description && (
-            <StyledButton onClick={onAddDescriptionClick} type="button">
-              Add description
-            </StyledButton>
-          )}
-          <StyledButton onClick={onConfirmClick} type="button">
-            Confirm
-          </StyledButton>
-        </>
+      {!taskEdit.isEditing ? (
+        <ShowControl taskValue={taskValue} setTaskEdit={setTaskEdit} />
       ) : (
-        <>
-          <StyledButton
-            onClick={() => dispatch(doTask(taskValue.id))}
-            type="button"
-          >
-            <span>{taskValue.isDone ? "Open task" : "Close task"}</span>
-            <img src={check} alt="Check mark"></img>
-          </StyledButton>
-          <StyledButton onClick={onEditClick} type="button">
-            <span>Edit task</span>
-            <img src={pencilIcon} alt="Pencil"></img>
-          </StyledButton>
-          <StyledButton onClick={onDeleteClick} type="button">
-            <span>Delete task</span>
-            <img src={binIcon} alt="Bin"></img>
-          </StyledButton>
-        </>
+        <EditControl
+          taskValue={taskValue}
+          taskEdit={taskEdit}
+          setTaskEdit={setTaskEdit}
+        />
       )}
     </StyledTaskControlWrapper>
   );

@@ -2,8 +2,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import Page from "../components/Page";
-import Header from "../components/Header";
-import TasK from "../components/Task";
+import Task from "../components/Task";
 import TaskControl from "../components/TaskControl";
 
 function TaskPage() {
@@ -13,23 +12,22 @@ function TaskPage() {
       if (task.id === taskId) return task;
     }
   });
-  const [taskEdit, useTaskEdit] = useState({
+  const [taskEdit, setTaskEdit] = useState({
     isEditing: false,
     title: taskValue.value.title,
     description: taskValue.value.description,
   });
   return (
     <Page>
-      <Header />
-      <TasK
+      <Task
         taskValue={taskValue}
         taskEdit={taskEdit}
-        setTaskEdit={useTaskEdit}
+        setTaskEdit={setTaskEdit}
       />
       <TaskControl
         taskValue={taskValue}
         taskEdit={taskEdit}
-        setTaskEdit={useTaskEdit}
+        setTaskEdit={setTaskEdit}
       />
     </Page>
   );

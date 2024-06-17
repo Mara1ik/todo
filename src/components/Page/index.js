@@ -1,7 +1,14 @@
 import { StyledContainer } from "./style";
 
+import Header from "../Header";
+
 function Page({ children }) {
-  return <StyledContainer>{children}</StyledContainer>;
+  return (
+    <StyledContainer>
+      <Header />
+      {children}
+    </StyledContainer>
+  );
 }
 
 export default Page;

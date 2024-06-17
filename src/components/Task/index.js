@@ -1,6 +1,6 @@
 import { StyledTaskWrapper, StyledInput, StyledStatus } from "./style";
 
-function TaskInput({ taskValue, taskEdit, setTaskEdit }) {
+function Task({ taskValue, taskEdit, setTaskEdit }) {
   function onTitleInputChange(e) {
     setTaskEdit((prev) => ({ ...prev, title: e.target.value }));
   }
@@ -46,4 +46,4 @@ function TaskInput({ taskValue, taskEdit, setTaskEdit }) {
   );
 }
 
-export default TaskInput;
+export default Task;

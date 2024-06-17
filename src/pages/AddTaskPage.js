@@ -1,12 +1,10 @@
-import Header from "../components/Header";
 import Page from "../components/Page";
-import TaskInput from "../components/TaskInput";
+import TaskCreator from "../components/TaskCreator";
 
 function AddTaskPage() {
   return (
     <Page>
-      <Header />
-      <TaskInput />
+      <TaskCreator />
     </Page>
   );
 }

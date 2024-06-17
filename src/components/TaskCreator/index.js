@@ -5,7 +5,7 @@ import { addTask } from "../../store";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledTextarea, StyledButton } from "./style";
 
-function TaskInput() {
+function TaskCreator() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const inputRef = useRef(null);
@@ -56,4 +56,4 @@ function TaskInput() {
   );
 }
 
-export default TaskInput;
+export default TaskCreator;
