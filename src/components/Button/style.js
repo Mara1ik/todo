@@ -7,6 +7,7 @@ export const StyledButton = styled.button`
   opacity: 0.6;
   display: flex;
   justify-content: center;
+  align-items: center;
   margin-top: ${(props) => (props.$isBottomPlace ? "auto" : "inherit")};
 
   &:hover {

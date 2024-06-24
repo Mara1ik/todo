@@ -1,13 +1,8 @@
 import { StyledButton } from "./style";
 
-function Button({ bottomPlace, children }) {
+function Button({ onClick, bottomPlace, children }) {
   return (
-    <StyledButton
-      $isBottomPlace={bottomPlace}
-      onClick={() => {
-        prompt("City?", "dubai");
-      }}
-    >
+    <StyledButton onClick={onClick} $isBottomPlace={bottomPlace}>
       {children}
     </StyledButton>
   );
