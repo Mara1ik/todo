@@ -7,25 +7,17 @@ import { fetchWeather, getWeather } from "../async/weather";
 
 function WeatherPage() {
   const dispatch = useDispatch();
-
+  function getCity(func) {
+    const city = prompt("City?", "dubai");
+    dispatch(func(city));
+  }
   return (
     <Page>
       <WeatherCards />
-      <Button
-        onClick={() => {
-          const city = prompt("City?", "dubai");
-          dispatch(fetchWeather(city));
-        }}
-        bottomPlace
-      >
+      <Button onClick={() => getCity(fetchWeather)} bottomPlace>
         Add weather widget (fetch)
       </Button>
-      <Button
-        onClick={() => {
-          const city = prompt("City?", "dubai");
-          dispatch(getWeather(city));
-        }}
-      >
+      <Button onClick={() => getCity(getWeather)}>
         Add weather widget (axios)
       </Button>
     </Page>

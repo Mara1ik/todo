@@ -1,17 +1,17 @@
 import { applyMiddleware, createStore } from "redux";
 import { thunk } from "redux-thunk";
+import {
+  ADD_TASK,
+  DO_TASK,
+  DELETE_TASK,
+  EDIT_TASK,
+  ADD_WEATHER,
+} from "./constants/actionTypes.js";
 
 const defaultState = {
   taskList: [],
   weatherList: [],
 };
-
-const ADD_TASK = "ADD_TASK";
-const DO_TASK = "DO_TASK";
-const DELETE_TASK = "DELETE_TASK";
-const EDIT_TASK = "EDIT_TASK";
-
-const ADD_WEATHER = "ADD_WEATHER";
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -67,9 +67,14 @@ const reducer = (state = defaultState, action) => {
 const store = createStore(reducer, applyMiddleware(thunk));
 export default store;
 
-export const addTask = (payload) => ({ type: ADD_TASK, payload });
-export const doTask = (payload) => ({ type: DO_TASK, payload });
-export const deleteTask = (payload) => ({ type: DELETE_TASK, payload });
-export const editTask = (payload) => ({ type: EDIT_TASK, payload });
+const addTask = (payload) => ({ type: ADD_TASK, payload });
+const doTask = (payload) => ({ type: DO_TASK, payload });
+const deleteTask = (payload) => ({ type: DELETE_TASK, payload });
+const editTask = (payload) => ({ type: EDIT_TASK, payload });
+const addWeather = (payload) => ({ type: ADD_WEATHER, payload });
 
-export const addWeather = (payload) => ({ type: ADD_WEATHER, payload });
+export const boundAddTask = (payload) => store.dispatch(addTask(payload));
+export const boundDoTask = (payload) => store.dispatch(doTask(payload));
+export const boundDeleteTask = (payload) => store.dispatch(deleteTask(payload));
+export const boundEditTask = (payload) => store.dispatch(editTask(payload));
+export const boundAddWeather = (payload) => store.dispatch(addWeather(payload));

@@ -13,7 +13,7 @@ function WeatherCards() {
           city={weatherData.city}
           temp={weatherData.temp}
           icon={weatherData.icon}
-        ></WeatherCard>
+        />
       ))}
     </StyledCardsWrapper>
   );

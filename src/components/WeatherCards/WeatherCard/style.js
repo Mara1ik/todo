@@ -6,11 +6,7 @@ export const StyledCardWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid black;
-  border-radius: 5px;
-  padding: 5rem;
-  padding-right: 0rem;
-
+  
   img {
     max-width: 70rem;
     aspect-ratio: 1;
