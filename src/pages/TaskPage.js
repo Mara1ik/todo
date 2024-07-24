@@ -17,6 +17,7 @@ function TaskPage() {
     title: taskValue.value.title,
     description: taskValue.value.description,
   });
+
   return (
     <Page>
       <Task

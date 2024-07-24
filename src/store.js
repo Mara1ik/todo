@@ -7,6 +7,7 @@ import {
   EDIT_TASK,
   ADD_WEATHER,
 } from "./constants/actionTypes.js";
+import { weatherIcons } from "./constants/weatherConstants.js";
 
 const defaultState = {
   taskList: [],
@@ -57,7 +58,16 @@ const reducer = (state = defaultState, action) => {
     case ADD_WEATHER:
       return {
         ...state,
-        weatherList: [...state.weatherList, action.payload],
+        weatherList: [
+          ...state.weatherList,
+          {
+            city: action.payload.name,
+            temp: Math.round(action.payload.main.temp - 273.15),
+            icon: weatherIcons[
+              action.payload.weather[0].icon.slice(0, 2) + "d"
+            ],
+          },
+        ],
       };
     default:
       return state;
