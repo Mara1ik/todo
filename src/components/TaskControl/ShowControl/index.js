@@ -1,13 +1,11 @@
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { doTask, deleteTask } from "../../../store";
+import { boundDoTask, boundDeleteTask } from "../../../store";
 import { StyledButton } from "./style";
 import check from "./../../../img/check.svg";
 import pencilIcon from "./../../../img/pencilIcon.svg";
 import binIcon from "./../../../img/binIcon.svg";
 
 function ShowControl({ taskValue, setTaskEdit }) {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   function onEditClick() {
@@ -16,15 +14,12 @@ function ShowControl({ taskValue, setTaskEdit }) {
 
   function onDeleteClick() {
     navigate("/");
-    dispatch(deleteTask(taskValue.id));
+    boundDeleteTask(taskValue.id);
   }
 
   return (
     <>
-      <StyledButton
-        onClick={() => dispatch(doTask(taskValue.id))}
-        type="button"
-      >
+      <StyledButton onClick={() => boundDoTask(taskValue.id)} type="button">
         <span>{taskValue.isDone ? "Open task" : "Close task"}</span>
         <img src={check} alt="Check mark"></img>
       </StyledButton>

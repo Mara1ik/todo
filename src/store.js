@@ -1,13 +1,18 @@
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import { thunk } from "redux-thunk";
+import {
+  ADD_TASK,
+  DO_TASK,
+  DELETE_TASK,
+  EDIT_TASK,
+  ADD_WEATHER,
+} from "./constants/actionTypes.js";
+import { weatherIcons } from "./constants/weatherConstants.js";
 
 const defaultState = {
   taskList: [],
+  weatherList: [],
 };
-
-const ADD_TASK = "ADD_TASK";
-const DO_TASK = "DO_TASK";
-const DELETE_TASK = "DELETE_TASK";
-const EDIT_TASK = "EDIT_TASK";
 
 const reducer = (state = defaultState, action) => {
   switch (action.type) {
@@ -50,15 +55,36 @@ const reducer = (state = defaultState, action) => {
           };
         }),
       };
+    case ADD_WEATHER:
+      return {
+        ...state,
+        weatherList: [
+          ...state.weatherList,
+          {
+            city: action.payload.name,
+            temp: Math.round(action.payload.main.temp - 273.15),
+            icon: weatherIcons[
+              action.payload.weather[0].icon.slice(0, 2) + "d"
+            ],
+          },
+        ],
+      };
     default:
       return state;
   }
 };
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 export default store;
 
-export const addTask = (payload) => ({ type: ADD_TASK, payload });
-export const doTask = (payload) => ({ type: DO_TASK, payload });
-export const deleteTask = (payload) => ({ type: DELETE_TASK, payload });
-export const editTask = (payload) => ({ type: EDIT_TASK, payload });
+const addTask = (payload) => ({ type: ADD_TASK, payload });
+const doTask = (payload) => ({ type: DO_TASK, payload });
+const deleteTask = (payload) => ({ type: DELETE_TASK, payload });
+const editTask = (payload) => ({ type: EDIT_TASK, payload });
+const addWeather = (payload) => ({ type: ADD_WEATHER, payload });
+
+export const boundAddTask = (payload) => store.dispatch(addTask(payload));
+export const boundDoTask = (payload) => store.dispatch(doTask(payload));
+export const boundDeleteTask = (payload) => store.dispatch(deleteTask(payload));
+export const boundEditTask = (payload) => store.dispatch(editTask(payload));
+export const boundAddWeather = (payload) => store.dispatch(addWeather(payload));

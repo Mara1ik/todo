@@ -31,6 +31,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     button {
+        font-size: 15rem;
         border: none;
         background: transparent;
         padding: 0;
