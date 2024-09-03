@@ -11,7 +11,7 @@ function WeatherPage() {
   function onAddButFetchClick() {
     getCity().then((response) => addWeatherFetch(response));
   }
-  
+
   function onAddButClick() {
     getCity().then((response) => addWeather(response));
   }
@@ -19,12 +19,10 @@ function WeatherPage() {
   return (
     <Page>
       <WeatherCards />
-      <Button onClick={() => onAddButFetchClick()} bottomPlace>
+      <Button onClick={onAddButFetchClick} bottomPlace>
         Add weather widget (fetch)
       </Button>
-      <Button onClick={() => onAddButClick()}>
-        Add weather widget (axios)
-      </Button>
+      <Button onClick={onAddButClick}>Add weather widget (axios)</Button>
     </Page>
   );
 }
