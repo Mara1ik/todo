@@ -1,24 +1,22 @@
 import WeatherCards from "../components/WeatherCards";
 import Page from "../components/Page";
 import Button from "../components/Button";
-import { fetchWeather, getWeather } from "../async/weather";
-import { boundAddWeather } from "../store";
+import { addWeather } from "../store";
+import { getWeather, getWeatherFetch } from "../async/weather";
 
 function WeatherPage() {
-  function getCity() {
+  async function getCity() {
     return prompt("City?", "dubai");
   }
 
-  function onAddButClick(getFunc) {
-    getFunc(getCity()).then((response) => {
-      if (response !== 404) boundAddWeather(response);
-    });
+  function onAddButClick(func) {
+    getCity().then((response) => addWeather(response, func));
   }
 
   return (
     <Page>
       <WeatherCards />
-      <Button onClick={() => onAddButClick(fetchWeather)} bottomPlace>
+      <Button onClick={() => onAddButClick(getWeatherFetch)} bottomPlace>
         Add weather widget (fetch)
       </Button>
       <Button onClick={() => onAddButClick(getWeather)}>
