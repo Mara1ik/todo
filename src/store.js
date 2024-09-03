@@ -9,6 +9,7 @@ import {
   ADD_WEATHER_FAIL,
 } from "./constants/actionTypes.js";
 import { weatherIcons } from "./constants/weatherConstants.js";
+import { getWeather, getWeatherFetch } from "./async/weather.js";
 
 const defaultState = {
   taskList: [],
@@ -95,8 +96,14 @@ export const boundDoTask = (payload) => store.dispatch(doTask(payload));
 export const boundDeleteTask = (payload) => store.dispatch(deleteTask(payload));
 export const boundEditTask = (payload) => store.dispatch(editTask(payload));
 
-export const addWeather = (city, func) => {
-  func(city)
+export const addWeatherFetch = (city) => {
+  getWeatherFetch(city)
+    .then((response) => store.dispatch(addWeatherSuccess(response)))
+    .catch((e) => store.dispatch(addWeatherFail()));
+};
+
+export const addWeather = (city) => {
+  getWeather(city)
     .then((response) => store.dispatch(addWeatherSuccess(response)))
     .catch((e) => store.dispatch(addWeatherFail()));
 };
