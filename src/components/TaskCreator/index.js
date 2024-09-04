@@ -1,12 +1,10 @@
 import { useRef, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { addTask } from "../../store";
+import { boundAddTask } from "../../store";
 import pencilIcon from "./../../img/pencilIcon.svg";
 import { StyledForm, StyledInput, StyledTextarea, StyledButton } from "./style";
 
 function TaskCreator() {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
   const inputRef = useRef(null);
   const defaultTaskValue = { title: "", description: "" };
@@ -19,7 +17,7 @@ function TaskCreator() {
   function onFormSubmit(e) {
     e.preventDefault();
     if (taskValue.title === "") return;
-    dispatch(addTask(taskValue));
+    boundAddTask(taskValue);
     navigate("/");
     setTaskValue(defaultTaskValue);
   }
@@ -44,7 +42,7 @@ function TaskCreator() {
       />
       <h3>Description</h3>
       <StyledTextarea
-         onChange={onDescriptionInputChange}
+        onChange={onDescriptionInputChange}
         placeholder={"Write description..."}
         value={taskValue.description || ""}
       />

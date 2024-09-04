@@ -8,6 +8,7 @@ import store from "./store";
 import AddTaskPage from "./pages/AddTaskPage.js";
 import ErrorPage from "./pages/ErrorPage.js";
 import TaskPage from "./pages/TaskPage.js";
+import WeatherPage from "./pages/WeatherPage.js";
 
 const router = createBrowserRouter([
   {
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
   {
     path: "/:taskId",
     element: <TaskPage />,
+  },
+  {
+    path: "/weather",
+    element: <WeatherPage />,
   },
 ]);
 

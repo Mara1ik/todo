@@ -6,7 +6,7 @@ function ErrorPage() {
     <Page>
       <span>Ops...</span>
       <span>U are not supposed to be here</span>
-      <NavLink>Home page</NavLink>
+      <NavLink to="/">Home page</NavLink>
     </Page>
   );
 }
