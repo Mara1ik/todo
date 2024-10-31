@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
 import WeatherCard from "./WeatherCard";
 import { StyledCardsWrapper } from "./style";
+import { useTypedSelector } from "../../hooks/useTypedSelector";
 
 function WeatherCards() {
-  const weatherList = useSelector((state) => state.weatherList);
+  const weatherList = useTypedSelector((state) => state.weatherList);
 
   return (
     <StyledCardsWrapper>

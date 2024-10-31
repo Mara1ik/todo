@@ -1,19 +1,35 @@
+import { FC } from "react";
+import Dispatcher from "../../../constants/dispatcherType";
+import { ITaskEdit, ITaskValue } from "../../../pages/TaskPage";
 import { boundEditTask } from "../../../store";
 import { StyledButton } from "./style";
 
-function EditControl({ taskValue, taskEdit, setTaskEdit }) {
+interface IEditControl {
+  taskValue: ITaskValue;
+  taskEdit: ITaskEdit;
+  setTaskEdit: Dispatcher<ITaskEdit>;
+}
+
+const EditControl: FC<IEditControl> = ({
+  taskValue,
+  taskEdit,
+  setTaskEdit,
+}) => {
   function onAddDescriptionClick() {
     boundEditTask({
       id: taskValue.id,
-      value: { title: taskEdit.title, description: "KEK" },
+      value: { title: taskEdit.value.title, description: "KEK" },
     });
   }
 
   function onConfirmClick() {
-    if (taskEdit.title === "") return;
+    if (taskEdit.value.title === "") return;
     boundEditTask({
       id: taskValue.id,
-      value: { title: taskEdit.title, description: taskEdit.description },
+      value: {
+        title: taskEdit.value.title,
+        description: taskEdit.value.description,
+      },
     });
     setTaskEdit((prev) => ({ ...prev, isEditing: false }));
   }
@@ -29,6 +45,6 @@ function EditControl({ taskValue, taskEdit, setTaskEdit }) {
       </StyledButton>
     </>
   );
-}
+};
 
 export default EditControl;

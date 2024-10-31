@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface IStyledStatus {
+  $isDone: boolean;
+}
+
 export const StyledTaskWrapper = styled.div`
   position: relative;
   display: flex;
@@ -27,14 +31,14 @@ export const StyledInput = styled.input`
   }
 `;
 
-export const StyledStatus = styled.div`
+export const StyledStatus = styled.div<IStyledStatus>`
   width: 80rem;
   position: absolute;
   top: 3rem;
   right: 3rem;
   border: 2px solid #413f3f;
   border-radius: 10px;
-  background-color: ${(props) => (props.$isDone ?  "#f1807e" : "#abf7b1" )};
+  background-color: ${(props) => (props.$isDone ? "#f1807e" : "#abf7b1")};
   padding: 3rem;
   text-align: center;
 `;

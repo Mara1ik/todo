@@ -1,9 +1,15 @@
-import { useRef } from "react";
+import { FC, useRef } from "react";
 import { boundDoTask, boundDeleteTask } from "../../../store";
 import binIcon from "./../../../img/binIcon.svg";
 import { StyledLi, StyledInput, StyledLink, StyledButton } from "./style";
 
-function ListItem({ taskValue, taskId, isDone }) {
+interface IListItem {
+  taskValue: string;
+  taskId: number;
+  isDone: boolean;
+}
+
+const ListItem: FC<IListItem> = ({ taskValue, taskId, isDone }) => {
   const checkboxRef = useRef(null);
 
   return (
@@ -14,7 +20,7 @@ function ListItem({ taskValue, taskId, isDone }) {
         onClick={() => boundDoTask(taskId)}
         checked={isDone}
       />
-      <StyledLink to={"/" + taskId} className={isDone && "checked"}>
+      <StyledLink to={"/" + taskId} className={isDone ? "checked" : ""}>
         {taskValue}
       </StyledLink>
       {isDone && (
@@ -24,6 +30,6 @@ function ListItem({ taskValue, taskId, isDone }) {
       )}
     </StyledLi>
   );
-}
+};
 
 export default ListItem;

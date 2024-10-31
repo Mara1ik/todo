@@ -6,15 +6,15 @@ import { StyledForm, StyledInput, StyledTextarea, StyledButton } from "./style";
 
 function TaskCreator() {
   const navigate = useNavigate();
-  const inputRef = useRef(null);
+  const inputRef = useRef<HTMLInputElement>(null);
   const defaultTaskValue = { title: "", description: "" };
   const [taskValue, setTaskValue] = useState(defaultTaskValue);
 
   useEffect(() => {
-    inputRef.current.focus();
+    inputRef.current?.focus();
   }, []);
 
-  function onFormSubmit(e) {
+  function onFormSubmit(e: React.SyntheticEvent) {
     e.preventDefault();
     if (taskValue.title === "") return;
     boundAddTask(taskValue);
@@ -22,11 +22,11 @@ function TaskCreator() {
     setTaskValue(defaultTaskValue);
   }
 
-  function onTitleInputChange(e) {
+  function onTitleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     setTaskValue((prev) => ({ ...prev, title: e.target.value }));
   }
 
-  function onDescriptionInputChange(e) {
+  function onDescriptionInputChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
     setTaskValue((prev) => ({ ...prev, description: e.target.value }));
   }
 
