@@ -1,14 +1,15 @@
+import { FC, PropsWithChildren } from "react";
 import { StyledContainer } from "./style";
 
 import Header from "../Header";
 
-function Page({ children }) {
+const Page: FC<PropsWithChildren> = ({ children }) => {
   return (
     <StyledContainer>
       <Header />
       {children}
     </StyledContainer>
   );
-}
+};
 
 export default Page;

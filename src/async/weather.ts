@@ -1,7 +1,7 @@
 import axios from "axios";
 import { baseUrl, keyUrl } from "../constants/weatherConstants";
 
-export const getWeatherFetch = async (city) => {
+export const getWeatherFetch = async (city: string) => {
   try {
     const response = await fetch(baseUrl + city + keyUrl);
     if (response.status === 404) {
@@ -14,7 +14,7 @@ export const getWeatherFetch = async (city) => {
   }
 };
 
-export const getWeather = async (city) => {
+export const getWeather = async (city: string) => {
   try {
     const response = await axios.get(baseUrl + city + keyUrl);
     return response.data;

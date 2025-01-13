@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledNavLinkWrapper = styled.div`
+interface IStyledNavLinkWrapper {
+  $isBottomPlace: boolean;
+}
+
+export const StyledNavLinkWrapper = styled.div<IStyledNavLinkWrapper>`
   height: 24rem;
   border: 2rem solid #413f3f;
   border-radius: 15px;

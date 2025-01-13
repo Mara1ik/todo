@@ -1,0 +1,10 @@
+enum actionTypes {
+  ADD_TASK = "ADD_TASK",
+  DO_TASK = "DO_TASK",
+  DELETE_TASK = "DELETE_TASK",
+  EDIT_TASK = "EDIT_TASK",
+  ADD_WEATHER_SUCCESS = "ADD_WEATHER_SUCCESS",
+  ADD_WEATHER_FAIL = "ADD_WEATHER_FAIL",
+}
+
+export default actionTypes;

@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
+import { useTypedSelector } from "./../../hooks/useTypedSelector";
 import ListItem from "./ListItem";
 import { StyledUl } from "./style";
 
 function List() {
-  const taskList = useSelector((state) => state.taskList);
+  const taskList = useTypedSelector((state) => state.taskList);
 
   return (
     <StyledUl>

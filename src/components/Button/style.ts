@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const StyledButton = styled.button`
+interface IStyledButton {
+  $isBottomPlace: boolean;
+}
+
+export const StyledButton = styled.button<IStyledButton>`
   height: 24rem;
   border: 2rem solid #413f3f;
   border-radius: 15px;

@@ -1,3 +1,4 @@
+import React from "react";
 import WeatherCards from "../components/WeatherCards";
 import Page from "../components/Page";
 import Button from "../components/Button";
@@ -9,11 +10,15 @@ function WeatherPage() {
   }
 
   function onAddButFetchClick() {
-    getCity().then((response) => addWeatherFetch(response));
+    getCity().then((response) =>
+      response !== null ? addWeatherFetch(response) : addWeatherFetch("error")
+    );
   }
 
   function onAddButClick() {
-    getCity().then((response) => addWeather(response));
+    getCity().then((response) =>
+      response !== null ? addWeather(response) : addWeather("error")
+    );
   }
 
   return (

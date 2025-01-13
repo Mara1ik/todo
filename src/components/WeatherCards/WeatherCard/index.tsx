@@ -1,6 +1,13 @@
+import { FC } from "react";
 import { StyledCardWrapper, StyledTextWrapper } from "./style";
 
-function WeatherCard({ city, temp, icon }) {
+interface IWeatherCard {
+  city: string;
+  temp: number;
+  icon: string;
+}
+
+const WeatherCard: FC<IWeatherCard> = ({ city, temp, icon }) => {
   return (
     <StyledCardWrapper>
       <StyledTextWrapper>
@@ -10,6 +17,6 @@ function WeatherCard({ city, temp, icon }) {
       <img src={icon} alt="Weather Icon" />
     </StyledCardWrapper>
   );
-}
+};
 
 export default WeatherCard;

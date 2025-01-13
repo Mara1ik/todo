@@ -2,13 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { Provider } from "react-redux";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import HomePage from "./pages/HomePage.js";
+import HomePage from "./pages/HomePage";
 import GlobalStyle from "./globalStyle";
 import store from "./store";
-import AddTaskPage from "./pages/AddTaskPage.js";
-import ErrorPage from "./pages/ErrorPage.js";
-import TaskPage from "./pages/TaskPage.js";
-import WeatherPage from "./pages/WeatherPage.js";
+import AddTaskPage from "./pages/AddTaskPage";
+import ErrorPage from "./pages/ErrorPage";
+import TaskPage from "./pages/TaskPage";
+import WeatherPage from "./pages/WeatherPage";
 
 const router = createBrowserRouter([
   {
@@ -30,7 +30,9 @@ const router = createBrowserRouter([
   },
 ]);
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(
+  document.getElementById("root") as HTMLElement
+);
 root.render(
   <React.StrictMode>
     <GlobalStyle />

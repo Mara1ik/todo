@@ -1,3 +1,4 @@
+import React from "react";
 import Page from "../components/Page";
 import NavLink from "../components/Links/NavLink";
 

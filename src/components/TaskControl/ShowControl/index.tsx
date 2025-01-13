@@ -1,11 +1,19 @@
+import { FC } from "react";
 import { useNavigate } from "react-router-dom";
 import { boundDoTask, boundDeleteTask } from "../../../store";
 import { StyledButton } from "./style";
 import check from "./../../../img/check.svg";
 import pencilIcon from "./../../../img/pencilIcon.svg";
 import binIcon from "./../../../img/binIcon.svg";
+import { ITaskEdit, ITaskValue } from "../../../pages/TaskPage";
+import Dispatcher from "../../../constants/dispatcherType";
 
-function ShowControl({ taskValue, setTaskEdit }) {
+interface IShowControl {
+  taskValue: ITaskValue;
+  setTaskEdit: Dispatcher<ITaskEdit>;
+}
+
+const ShowControl: FC<IShowControl> = ({ taskValue, setTaskEdit }) => {
   const navigate = useNavigate();
 
   function onEditClick() {
@@ -33,6 +41,6 @@ function ShowControl({ taskValue, setTaskEdit }) {
       </StyledButton>
     </>
   );
-}
+};
 
 export default ShowControl;

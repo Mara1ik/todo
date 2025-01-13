@@ -1,19 +1,34 @@
+import { FC } from "react";
 import { StyledTaskWrapper, StyledInput, StyledStatus } from "./style";
+import { ITaskValue, ITaskEdit } from "./../../pages/TaskPage";
+import Dispatcher from "./../../constants/dispatcherType";
 
-function Task({ taskValue, taskEdit, setTaskEdit }) {
-  function onTitleInputChange(e) {
-    setTaskEdit((prev) => ({ ...prev, title: e.target.value }));
+interface ITask {
+  taskEdit: ITaskEdit;
+  taskValue: ITaskValue;
+  setTaskEdit: Dispatcher<ITaskEdit>;
+}
+
+const Task: FC<ITask> = ({ taskValue, taskEdit, setTaskEdit }) => {
+  function onTitleInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTaskEdit((prev) => ({
+      ...prev,
+      value: { ...prev.value, title: e.target.value },
+    }));
   }
 
-  function onDescriptionInputChange(e) {
-    setTaskEdit((prev) => ({ ...prev, description: e.target.value }));
+  function onDescriptionInputChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setTaskEdit((prev) => ({
+      ...prev,
+      value: { ...prev.value, description: e.target.value },
+    }));
   }
 
   const Title = taskEdit.isEditing ? (
     <StyledInput
       onChange={onTitleInputChange}
       type="text"
-      value={taskEdit.title}
+      value={taskEdit.value.title}
     />
   ) : (
     <span>{taskValue.value.title}</span>
@@ -23,7 +38,7 @@ function Task({ taskValue, taskEdit, setTaskEdit }) {
     <StyledInput
       onChange={onDescriptionInputChange}
       type="text"
-      value={taskEdit.description}
+      value={taskEdit.value.description}
     />
   ) : (
     <span>{taskValue.value.description}</span>
@@ -44,6 +59,6 @@ function Task({ taskValue, taskEdit, setTaskEdit }) {
       </StyledStatus>
     </StyledTaskWrapper>
   );
-}
+};
 
 export default Task;
